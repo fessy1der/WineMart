@@ -18,7 +18,31 @@ namespace WineMart.Services.Product
 
         public ServiceResponse<Data.Models.Product> ArchiveProduct(int id)
         {
-            throw new NotImplementedException();
+            try
+            {
+                var product = _db.Products.Find(id);
+                product.IsArchived = true;
+                _db.SaveChanges();
+
+                return new ServiceResponse<Data.Models.Product>
+                {
+                    Data = product,
+                    Time = DateTime.UtcNow,
+                    Message = "Archived Product",
+                    IsSuccess = true
+                };
+            }
+
+            catch (Exception e)
+            {
+                return new ServiceResponse<Data.Models.Product>
+                {
+                    Data = null,
+                    Time = DateTime.UtcNow,
+                    Message = e.StackTrace,
+                    IsSuccess = false
+                };
+            }
         }
 
         public ServiceResponse<Data.Models.Product> CreateProduct(Data.Models.Product product)
