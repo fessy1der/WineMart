@@ -12,6 +12,10 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using WineMart.Data;
+using WineMart.Services.Customer;
+using WineMart.Services.Inventory;
+using WineMart.Services.Order;
+using WineMart.Services.Product;
 
 namespace WineMart.Web
 {
@@ -33,6 +37,11 @@ namespace WineMart.Web
                 options.EnableDetailedErrors();
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"));
             });
+
+            services.AddTransient<IProductService, ProductService>();
+            services.AddTransient<IOrderService, OrderService>();
+            services.AddTransient<ICustomerService, CustomerService>();
+            services.AddTransient<IInventoryService, InventoryService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
