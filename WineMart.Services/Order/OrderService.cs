@@ -7,6 +7,7 @@ using System.Security.AccessControl;
 using System.Text;
 using WineMart.Data;
 using WineMart.Services.Inventory;
+using WineMart.Services.Product;
 
 namespace WineMart.Services.Order
 {
@@ -31,7 +32,7 @@ namespace WineMart.Services.Order
             foreach (var item in order.OrderItems)
             {
                 item.Product = _productService
-                    .GetProductById(item.Product.Id);
+                    .GetProduct(item.Product.Id);
                 var inventoryId = _inventoryService
                     .GetByProductId(item.Product.Id).Id;
                 _inventoryService
