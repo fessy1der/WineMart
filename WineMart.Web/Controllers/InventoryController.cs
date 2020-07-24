@@ -17,10 +17,7 @@ namespace WineMart.Web.Controllers
         private readonly IInventoryService _inventoryService;
         private readonly ILogger<InventoryController> _logger;
 
-        public InventoryController(
-            ILogger<InventoryController> logger,
-            IInventoryService inventoryService
-        )
+        public InventoryController(ILogger<InventoryController> logger,IInventoryService inventoryService)
         {
             _inventoryService = inventoryService;
             _logger = logger;
