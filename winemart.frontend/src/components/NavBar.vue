@@ -1,13 +1,23 @@
 <template>
-    <div class="nav-container"></div>
+    <div class="nav-container">
+      <img id="logo" alt="brand logo" src="../assets/images/logo.png"/>
+      <h1>Admin Portal</h1>
+      <app-button
+        id="navInventory"
+        :link="'/inventory'"
+      >
+        Inventory
+      </app-button>
+    </div>
 </template>
 
 <script lang="ts">
 import {Component, Vue} from 'vue-property-decorator';
+import AppButton from "@/components/AppButton.vue";
 
 @Component({
     name: 'NavBar',
-    components: {}
+    components: { AppButton }
 })
 
 export default class NavBar extends Vue{};
@@ -29,13 +39,16 @@ export default class NavBar extends Vue{};
   
 }
 
-#businessLogo {
-  width: 100%;
+img#logo {
+    max-height: 250px;
+    // max-width: 200px;
+    width: 100%;
 }
 
 h1 {
   font-size: 1.2rem;
   margin: 1rem 0;
+  font-weight: 600;
 }
 
 
