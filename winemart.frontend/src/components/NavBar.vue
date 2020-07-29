@@ -65,7 +65,6 @@ export default class NavBar extends Vue{};
 
 img#logo {
     max-height: 250px;
-    // max-width: 200px;
     width: 100%;
 }
 

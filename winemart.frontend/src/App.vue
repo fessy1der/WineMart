@@ -32,10 +32,6 @@ a {
   text-decoration: none;
 }
 
-hr {
-  border: 1px solid $primary;
-  margin: 1rem 0;
-}
 
 #app {
   font-family: "Avenir", Helvetica, Arial, sans-serif;
@@ -64,7 +60,7 @@ a {
   text-decoration: none;
 }
 hr {
-  border: 1px solid #eee;
+  border: 1px solid #ba54f5;
   margin: 1rem 0;
 }
 
