@@ -1,6 +1,7 @@
 <template>
     <div class="container">
         <h1 id="title">Dashboard</h1>
+        <hr>
     </div>
 </template>
 
@@ -19,5 +20,6 @@ export default class Inventory extends Vue{}
 
 <style lang="scss" scoped>
 @import "@/scss/global.scss";
+
 
 </style>

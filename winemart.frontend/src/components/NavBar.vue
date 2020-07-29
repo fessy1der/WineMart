@@ -1,12 +1,36 @@
 <template>
     <div class="nav-container">
-      <img id="logo" alt="brand logo" src="../assets/images/logo.png"/>
-      <h1>Admin Portal</h1>
+      <router-link to="/">
+        <img id="logo" alt="brand logo" src="../assets/images/logo.png"/>
+      </router-link>
+      <h1>Admin Center</h1>
       <app-button
         id="navInventory"
         :link="'/inventory'"
+        is-full-width
       >
         Inventory
+      </app-button>
+      <app-button
+        id="navOrders"
+        :link="'/orders'"
+        is-full-width
+      >
+        View Orders
+      </app-button>
+      <app-button
+        id="navCustomers"
+        :link="'/customers'"
+        is-full-width
+      >
+        Customers
+      </app-button>
+      <app-button
+        id="navInvoice"
+        :link="'/invoice/new'"
+        is-full-width
+      >
+        Create Invoice
       </app-button>
     </div>
 </template>

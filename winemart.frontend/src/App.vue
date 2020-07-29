@@ -33,7 +33,7 @@ a {
 }
 
 hr {
-  border: 1px solid #eee;
+  border: 1px solid $primary;
   margin: 1rem 0;
 }
 
