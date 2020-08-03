@@ -15,13 +15,13 @@
                     {{ item.product.name }}
                 </td>
                 <td>
-                    {{ item.product.price }}
+                    {{ item.product.price | price }}
                 </td>
                 <td>
-                    {{ item.product.availableQuantity }}
+                    {{ item.availableQuantity }}
                 </td>
                 <td>
-                    {{ item.product.supposedQuantity }}
+                    {{ item.supposedQuantity }}
                 </td>
                 <td>
                     <div>
