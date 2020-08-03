@@ -1,6 +1,10 @@
 <template>
     <div class="link">
-        <button :class="['app-button', {'full-width': isFullWidth}]" @click="goToRoute" >
+        <button v-if="link" :class="['app-button', {'full-width': isFullWidth}]" @click="goToRoute" type="button">
+            <slot></slot>
+        </button>
+
+        <button v-else :class="['app-button', {'full-width': isFullWidth}]" @click="onClick" type="button">
             <slot></slot>
         </button>
     </div>
@@ -26,6 +30,11 @@ export default class AppButton extends Vue{
     goToRoute(){
         this.$router.push( this.link!);
     }
+
+    onClick(){
+      this.$emit('button:click');
+    }
+    
 }
 </script>
 

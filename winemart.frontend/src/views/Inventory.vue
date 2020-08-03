@@ -2,6 +2,12 @@
     <div class="container">
         <h1 id="title">Dashboard</h1>
         <hr>
+
+        <div class="actions">
+            <app-button @click.native="displayProductModal" id="btnAddProduct" > Add Product </app-button>
+            <app-button @click.native="displayShipmentModal" id="btnAddShipment" > Add Shipment </app-button>
+        </div>
+
         <table id="tbl" class="tbl">
             <tr>
                 <th>Product Name</th>
@@ -30,6 +36,8 @@
                 </td>
             </tr>
         </table>    
+        <product-modal v-if="isAddNewProduct"/>
+        <shipment-modal v-if="isAddNewShipment" :inventory="inventory" @close="closeModals"/>
     </div>
 </template>
 
@@ -37,13 +45,17 @@
 import Vue from 'vue'
 import { Component } from 'vue-property-decorator';
 import {IInventory} from '@/types/Inventory'
+import AppButton from '@/components/AppButton.vue'
 
 @Component({
     name: 'Inventory',
-    components: {}
+    components: {AppButton}
 })
 
 export default class Inventory extends Vue{
+    isAddNewProduct: boolean = false;
+    isAddNewShipment: boolean = false;
+
     inventory: IInventory[] = [
         {
             id: 1,
@@ -76,6 +88,14 @@ export default class Inventory extends Vue{
             supposedQuantity: 45,
         }
     ];
+
+    displayProductModal(){}
+    displayShipmentModal(){}
+
+    closeModals(){
+        this.isAddNewShipment = false;
+        this.isAddNewProduct = false;
+    }
 }
 
 </script>
