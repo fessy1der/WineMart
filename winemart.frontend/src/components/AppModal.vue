@@ -49,6 +49,8 @@ export default class ShipmentModal extends Vue {
 </script>
 
 <style lang="scss" scoped>
+@import "@/scss/global.scss";
+
 .modal {
   background: #fff;
   box-shadow: 2px 2px 20px 1px;
@@ -58,10 +60,11 @@ export default class ShipmentModal extends Vue {
   width: 640px;
   border-radius: 3px;
 }
+
 .modal-header {
   padding: 15px;
   display: flex;
-  background-color: $solar-blue;
+  background-color: $blue;
   color: #fff;
   font-size: 1.2rem;
   font-weight: bold;

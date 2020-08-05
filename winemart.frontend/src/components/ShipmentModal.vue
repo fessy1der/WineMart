@@ -40,10 +40,11 @@ import AppButton from '@/components/AppButton.vue'
 import { IInventory } from '../types/Inventory';
 import {IProduct} from '@/types/Product';
 import {IShipment} from '@/types/Shipment';
+import AppModal from '@/components/AppModal.vue'
 
 @Component({
     name: 'ShipmentModal',
-    components: {AppButton}
+    components: {AppButton, AppModal}
 })
 
 export default class ShipmentModal extends Vue {
@@ -78,5 +79,6 @@ this.$emit("close");
 </script>
 
 <style lang="scss" scoped>
+@import "@/scss/global.scss";
 
 </style>

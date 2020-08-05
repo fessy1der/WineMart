@@ -4,8 +4,8 @@
         <hr>
 
         <div class="actions">
-            <app-button @click.native="displayProductModal" id="btnAddProduct" > Add Product </app-button>
-            <app-button @click.native="displayShipmentModal" id="btnAddShipment" > Add Shipment </app-button>
+            <app-button @button:click="displayProductModal" id="btnAddProduct" > Add Product </app-button>
+            <app-button @button:click="displayShipmentModal" id="btnAddShipment" > Add Shipment </app-button>
         </div>
 
         <table id="tbl" class="tbl">
@@ -36,7 +36,7 @@
                 </td>
             </tr>
         </table>    
-        <product-modal v-if="isAddNewProduct"/>
+        <product-modal v-if="isAddNewProduct" @close="closeModals"/>
         <shipment-modal v-if="isAddNewShipment" :inventory="inventory" @close="closeModals"/>
     </div>
 </template>
@@ -45,11 +45,15 @@
 import Vue from 'vue'
 import { Component } from 'vue-property-decorator';
 import {IInventory} from '@/types/Inventory'
+import {IShipment} from '@/types/Shipment'
+import {IProduct} from '@/types/Product'
 import AppButton from '@/components/AppButton.vue'
+import ProductModal from '@/components/ProductModal.vue'
+import ShipmentModal from '@/components/ShipmentModal.vue'
 
 @Component({
     name: 'Inventory',
-    components: {AppButton}
+    components: {AppButton, ProductModal, ShipmentModal}
 })
 
 export default class Inventory extends Vue{
@@ -89,12 +93,33 @@ export default class Inventory extends Vue{
         }
     ];
 
-    displayProductModal(){}
-    displayShipmentModal(){}
+    displayProductModal(){
+        this.isAddNewProduct = true;
+    }
+
+    displayShipmentModal(){
+        this.isAddNewShipment = true;
+    }
 
     closeModals(){
         this.isAddNewShipment = false;
         this.isAddNewProduct = false;
+    }
+
+    async saveNewProduct(newProduct: IProduct) {
+    
+    }
+
+    async saveNewShipment(shipment: IShipment) {
+        
+    }
+
+    async initialize(){
+
+    }
+
+    async created(){
+        
     }
 }
 
@@ -103,5 +128,9 @@ export default class Inventory extends Vue{
 <style lang="scss" scoped>
 @import "@/scss/global.scss";
 
-
+.actions{
+    display: flex;
+    float: right;
+    margin-bottom: 15px;
+}
 </style>

@@ -5,8 +5,8 @@
         </template>
         <template v-slot:body>
             <ul class="newProduct">
-            <li>
-            <label for="isTaxable">Is this product taxable?</label>
+            <li class="tax-detail">
+            <label for="isTaxable">Is this product taxable ?</label>
             <input
                 type="checkbox"
                 id="isTaxable"
@@ -34,20 +34,20 @@
         </ul>
         </template>
         <template v-slot:footer>
-            <solar-button
+            <app-button
             type="button"
             @click.native="save"
             aria-label="save"
         >
             Save Product
-        </solar-button>
-        <solar-button
+        </app-button>
+        <app-button
             type="button"
             @click.native="close"
             aria-label="close"
         >
             Close
-        </solar-button>
+        </app-button>
         </template>
     </app-modal>
 </template>
@@ -58,10 +58,11 @@ import {Component, Prop} from 'vue-property-decorator';
 import AppButton from '@/components/AppButton.vue'
 import { IInventory } from '../types/Inventory';
 import {IProduct} from '@/types/Product';
+import AppModal from '@/components/AppModal.vue'
 
 @Component({
     name: 'ProductModal',
-    components: {AppButton}
+    components: {AppButton, AppModal}
 })
 
 export default class ShipmentModal extends Vue {
@@ -85,10 +86,44 @@ save() {
 close() {
     this.$emit("close");
   }
-  
+
 }
 </script>
 
 <style lang="scss" scoped>
+@import "@/scss/global.scss";
 
+.newProduct {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  
+  .tax-detail{
+      display: flex;
+
+      input{
+          float: left;
+          width: 10%;
+          height: 1.3rem;
+          padding: 0.1rem;
+      }
+  }
+
+  input {
+    width: 100%;
+    height: 1.8rem;
+    margin-bottom: 1.2rem;
+    font-size: 1.1rem;
+    line-height: 1.3rem;
+    padding: 0.2rem;
+    color: #555;
+  }
+
+  label {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 0.3rem;
+    color: rgb(37, 33, 33);
+  }
+}
 </style>
