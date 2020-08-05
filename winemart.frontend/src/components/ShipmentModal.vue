@@ -70,6 +70,10 @@ save() {
     };
     this.$emit('save:shipment', shipment)
   }
+
+close() {
+this.$emit("close");
+}
 }
 </script>
 
