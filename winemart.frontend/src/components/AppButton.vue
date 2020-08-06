@@ -1,10 +1,6 @@
 <template>
     <div class="link">
-        <button v-if="link" :class="['app-button', {'full-width': isFullWidth}]" @click="goToRoute" type="button">
-            <slot></slot>
-        </button>
-
-        <button v-else :class="['app-button', {'full-width': isFullWidth}]" @click="onClick" type="button">
+        <button :class="['app-button', {'full-width': isFullWidth}]" @click="onClick" type="button">
             <slot></slot>
         </button>
     </div>
@@ -21,15 +17,8 @@ import {Prop} from 'vue-property-decorator';
 })
 
 export default class AppButton extends Vue{
-    @Prop({required: false, type: String}) 
-    link?: string;
-
     @Prop({required: false, type: Boolean, default: false})
     isFullWidth?: boolean;
-
-    goToRoute(){
-        this.$router.push( this.link!);
-    }
 
     onClick(){
       this.$emit('button:click');

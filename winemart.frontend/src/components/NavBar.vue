@@ -6,28 +6,28 @@
       <h1>Admin Center</h1>
       <app-button
         id="navInventory"
-        :link="'/inventory'"
+        @button:click="changeRoute('/inventory')"
         is-full-width
       >
         Inventory
       </app-button>
       <app-button
         id="navOrders"
-        :link="'/orders'"
+        @button:click="changeRoute('/orders')"
         is-full-width
       >
         View Orders
       </app-button>
       <app-button
         id="navCustomers"
-        :link="'/customers'"
+        @button:click="changeRoute('/customers')"
         is-full-width
       >
         Customers
       </app-button>
       <app-button
         id="navInvoice"
-        :link="'/invoice/new'"
+        @button:click="changeRoute('/invoice/new')"
         is-full-width
       >
         Create Invoice
@@ -44,7 +44,11 @@ import AppButton from "@/components/AppButton.vue";
     components: { AppButton }
 })
 
-export default class NavBar extends Vue{};
+export default class NavBar extends Vue{
+  async changeRoute(route: string){
+    await this.$router.push(route);
+  }
+};
 </script>
 
 <style scoped lang="scss">
