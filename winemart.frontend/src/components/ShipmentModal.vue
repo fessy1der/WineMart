@@ -64,6 +64,10 @@ export default class ShipmentModal extends Vue {
 
   qtyReceived: number = 0;
 
+close() {
+this.$emit("close");
+}
+
 save() {
     let shipment: IShipment = {
       productId: this.selectedProduct.id,
@@ -71,10 +75,6 @@ save() {
     };
     this.$emit('save:shipment', shipment)
   }
-
-close() {
-this.$emit("close");
-}
 }
 </script>
 

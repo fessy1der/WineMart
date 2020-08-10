@@ -37,7 +37,7 @@ namespace WineMart.Web.Controllers
 
         
         [HttpGet("/api/product")]
-        public ActionResult GetProduct()
+        public ActionResult GetProducts()
         {
             _logger.LogInformation("Getting all products");
             var products = _productService.GetProducts();

@@ -30,14 +30,14 @@
                     {{ item.supposedQuantity }}
                 </td>
                 <td>
-                    <div>
-                        <i class="fas fa-trash-alt"></i>
+                    <div @click="archiveProduct">
+                        <i class="fas fa-archive"></i>
                     </div>
                 </td>
             </tr>
         </table>    
-        <product-modal v-if="isAddNewProduct" @close="closeModals"/>
-        <shipment-modal v-if="isAddNewShipment" :inventory="inventory" @close="closeModals"/>
+        <product-modal v-if="isAddNewProduct" @save:product="saveNewProduct" @close="closeModals"/>
+        <shipment-modal v-if="isAddNewShipment" @save:shipment="saveNewShipment" :inventory="inventory" @close="closeModals"/>
     </div>
 </template>
 
@@ -50,6 +50,11 @@ import {IProduct} from '@/types/Product'
 import AppButton from '@/components/AppButton.vue'
 import ProductModal from '@/components/ProductModal.vue'
 import ShipmentModal from '@/components/ShipmentModal.vue'
+import { InventoryService } from '@/services/inventory-service'
+import { ProductService } from '@/services/product-service'
+
+const inventoryService = new InventoryService();
+const productService = new ProductService();
 
 @Component({
     name: 'Inventory',
@@ -60,38 +65,7 @@ export default class Inventory extends Vue{
     isAddNewProduct: boolean = false;
     isAddNewShipment: boolean = false;
 
-    inventory: IInventory[] = [
-        {
-            id: 1,
-            product: {
-                id: 1,
-                name: "test",
-                description: "anything",
-                price: 20,
-                isTaxable: true,
-                isArchived: false,
-                dateCreated: new Date(),
-                dateUpdated: new Date()
-            },
-            availableQuantity: 35,
-            supposedQuantity: 35,
-        },
-        {
-            id: 2,
-            product: {
-                id: 2,
-                name: "test 2",
-                description: "any product",
-                price: 40,
-                isTaxable: true,
-                isArchived: false,
-                dateCreated: new Date(),
-                dateUpdated: new Date()
-            },
-            availableQuantity: 45,
-            supposedQuantity: 45,
-        }
-    ];
+    inventory: IInventory[] = [];
 
     displayProductModal(){
         this.isAddNewProduct = true;
@@ -107,19 +81,29 @@ export default class Inventory extends Vue{
     }
 
     async saveNewProduct(newProduct: IProduct) {
-    
+        await productService.save(newProduct);
+        this.isAddNewProduct = false;
+        await this.initialize();
     }
 
     async saveNewShipment(shipment: IShipment) {
-        
+        await inventoryService.updateInventoryQuantity(shipment);
+        this.isAddNewShipment = false;
+        await this.initialize();
+    }
+
+    async archiveProduct(productId: number){
+        await productService.archive(productId);
+        await this.initialize();
     }
 
     async initialize(){
-
+        this.inventory = await inventoryService.getInventory();
+        // await this.$store.dispatch("assignSnapshots")
     }
 
     async created(){
-        
+        await this.initialize();
     }
 }
 

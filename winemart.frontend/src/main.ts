@@ -7,7 +7,7 @@ Vue.config.productionTip = false;
 
 Vue.filter('price', function(number: number){
   if(isNaN(number)){return '-'}
-  return '₦' + number.toFixed(3);
+  return '$' + number.toFixed(3);
 });
 
 new Vue({
