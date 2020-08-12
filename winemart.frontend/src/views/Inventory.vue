@@ -30,7 +30,7 @@
                     {{ item.supposedQuantity }}
                 </td>
                 <td>
-                    <div @click="archiveProduct">
+                    <div @click="archiveProduct(item.product.id)">
                         <i class="fas fa-archive"></i>
                     </div>
                 </td>
