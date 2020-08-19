@@ -4,7 +4,7 @@ export interface ICustomer {
     updatedOn?: Date;
     firstName: string;
     lastName: string;
-    primaryAddress: ICustomerAddress;
+    address: ICustomerAddress;
   }
   
   export interface ICustomerAddress {

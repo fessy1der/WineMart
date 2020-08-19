@@ -98,9 +98,11 @@ export default class CustomerModal extends Vue {
     firstName: "",
     lastName: ""
   };
+
   save() {
     this.$emit("save:customer", this.customer);
   }
+  
   close() {
     this.$emit("close");
   }

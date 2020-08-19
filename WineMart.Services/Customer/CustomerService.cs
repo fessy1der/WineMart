@@ -22,7 +22,7 @@ namespace WineMart.Services.Customer
 
             try
             {
-                _db.Customers.Remove(customer);
+                _db.Customers.Add(customer);
                 _db.SaveChanges();
 
                 return new ServiceResponse<Data.Models.Customer>

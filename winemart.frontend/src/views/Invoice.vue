@@ -205,11 +205,13 @@ export default class CreateInvoice extends Vue {
     customerId: 0,
     lineItems: []
   };
+
   customers: ICustomer[] = [];
   selectedCustomerId: number = 0;
   inventory: IInventory[] = [];
   lineItems: ILineItem[] = [];
   newItem: ILineItem = { product: undefined, quantity: 0 };
+
   get canGoNext() {
     if (this.invoiceStep === 1) {
       return this.selectedCustomerId !== 0;
@@ -222,18 +224,22 @@ export default class CreateInvoice extends Vue {
     }
     return false;
   }
+
   get canGoPrev() {
     return this.invoiceStep !== 1;
   }
+
   get runningTotal() {
     return this.lineItems.reduce(
       (a, b) => a + b["product"]["price"] * b["quantity"],
       0
     );
   }
+
   get selectedCustomer() {
     return this.customers.find(c => c.id == this.selectedCustomerId);
   }
+
   async submitInvoice(): Promise<void> {
     this.invoice = {
       customerId: this.selectedCustomerId,
@@ -243,6 +249,7 @@ export default class CreateInvoice extends Vue {
     this.downloadPdf();
     await this.$router.push("/orders");
   }
+  
   downloadPdf() {
     let pdf = new jsPDF("p", "pt", "a4", true);
     let invoice = document.getElementById("invoice");
@@ -254,6 +261,7 @@ export default class CreateInvoice extends Vue {
       pdf.save("invoice");
     });
   }
+
   addLineItem() {
     let newItem: ILineItem = {
       product: this.newItem.product,
@@ -272,32 +280,39 @@ export default class CreateInvoice extends Vue {
     }
     this.newItem = { product: undefined, quantity: 0 };
   }
+
   startOver(): void {
     this.invoice = { customerId: 0, lineItems: [] };
     this.invoiceStep = 1;
   }
+
   finalizeOrder() {
     this.invoiceStep = 3;
   }
+
   prev(): void {
     if (this.invoiceStep === 1) {
       return;
     }
     this.invoiceStep -= 1;
   }
+
   next(): void {
     if (this.invoiceStep === 3) {
       return;
     }
     this.invoiceStep += 1;
   }
+
   async initialize(): Promise<void> {
     this.customers = await customerService.getCustomers();
     this.inventory = await inventoryService.getInventory();
   }
+
   async created() {
     await this.initialize();
   }
+
 }
 </script>
 
@@ -332,7 +347,7 @@ export default class CreateInvoice extends Vue {
 }
 .price-final {
   font-weight: bold;
-  color: $solar-green;
+  color: $green;
 }
 .due {
   font-weight: bold;

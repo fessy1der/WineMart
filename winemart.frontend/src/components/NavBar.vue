@@ -27,7 +27,7 @@
       </app-button>
       <app-button
         id="navInvoice"
-        @button:click="changeRoute('/invoice/new')"
+        @button:click="changeRoute('/invoice')"
         is-full-width
       >
         Create Invoice

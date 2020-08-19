@@ -24,13 +24,13 @@
         </td>
         <td>
           {{
-            customer.primaryAddress.addressLine1 +
+            customer.address.addressLine1 +
               " " +
-              customer.primaryAddress.addressLine2
+              customer.address.addressLine2
           }}
         </td>
         <td>
-          {{ customer.primaryAddress.state }}
+          {{ customer.address.state }}
         </td>
         <td>
           {{ customer.createdOn | humanizeDate }}
