@@ -5,12 +5,12 @@
       Manage Customers
     </h1>
     <hr />
-    <div class="customer-actions">
+    <div class="actions">
       <app-button @button:click="showCustomerModal">
         Add Customer
       </app-button>
     </div>
-    <table id="customers" class="table">
+    <table id="customers" class="tbl">
       <tr>
         <th>Customer</th>
         <th>Address</th>
@@ -57,7 +57,7 @@ import { Component, Vue } from "vue-property-decorator";
 import { ICustomer } from "@/types/Customer";
 import AppButton from "@/components/AppButton.vue";
 import CustomerService from "@/services/customer-service";
-import CustomerModal from "@/components/modals/CustomerModal.vue";
+import CustomerModal from "@/components/CustomerModal.vue";
 
 const customerService = new CustomerService();
 
@@ -111,6 +111,6 @@ export default class Customers extends Vue {
   cursor: pointer;
   font-weight: bold;
   font-size: 1.2rem;
-  color: $solar-red;
+  color: $red;
 }
 </style>

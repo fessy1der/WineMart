@@ -82,12 +82,14 @@
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
 import AppButton from "@/components/AppButton.vue";
-import AppModal from "@/components/modals/AppModal.vue";
+import AppModal from "@/components/AppModal.vue";
 import { ICustomer } from "@/types/Customer";
+
 @Component({
   name: "CustomerModal",
   components: { AppButton, AppModal }
 })
+
 export default class CustomerModal extends Vue {
   customer: ICustomer = {
     primaryAddress: {},
@@ -123,8 +125,9 @@ export default class CustomerModal extends Vue {
   }
   label {
     font-weight: bold;
-    margin: 0.8rem;
     display: block;
+    margin-bottom: 0.3rem;
+    color: rgb(37, 33, 33);
   }
 }
 </style>

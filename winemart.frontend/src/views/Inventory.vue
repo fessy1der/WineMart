@@ -31,7 +31,7 @@
                 </td>
                 <td>
                     <div @click="archiveProduct(item.product.id)">
-                        <i class="fas fa-archive"></i>
+                        <i class="far fa-trash-alt archive"></i>
                     </div>
                 </td>
             </tr>
@@ -112,9 +112,7 @@ export default class Inventory extends Vue{
 <style lang="scss" scoped>
 @import "@/scss/global.scss";
 
-.actions{
-    display: flex;
-    float: right;
-    margin-bottom: 15px;
+.archive{
+    cursor: pointer;
 }
 </style>
