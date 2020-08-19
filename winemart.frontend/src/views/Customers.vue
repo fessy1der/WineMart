@@ -36,10 +36,9 @@
           {{ customer.createdOn | humanizeDate }}
         </td>
         <td>
-          <div
-            class="lni-cross-circle customer-delete"
-            @click="deleteCustomer(customer.id)"
-          ></div>
+          <div @click="deleteCustomer(customer.id)">
+            <i class="far fa-trash-alt archive"></i>
+          </div>
         </td>
       </tr>
     </table>
