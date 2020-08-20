@@ -81,4 +81,10 @@ save() {
 <style lang="scss" scoped>
 @import "@/scss/global.scss";
 
+label  {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 0.3rem;
+  }
+  
 </style>

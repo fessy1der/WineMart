@@ -18,7 +18,7 @@
           <input
             type="text"
             id="address1"
-            v-model="customer.primaryAddress.addressLine1"
+            v-model="customer.address.addressLine1"
           />
         </li>
         <li>
@@ -26,19 +26,19 @@
           <input
             type="text"
             id="address2"
-            v-model="customer.primaryAddress.addressLine2"
+            v-model="customer.address.addressLine2"
           />
         </li>
         <li>
           <label for="city">City</label>
-          <input type="text" id="city" v-model="customer.primaryAddress.city" />
+          <input type="text" id="city" v-model="customer.address.city" />
         </li>
         <li>
           <label for="state">State</label>
           <input
             type="text"
             id="state"
-            v-model="customer.primaryAddress.state"
+            v-model="customer.address.state"
           />
         </li>
         <li>
@@ -46,7 +46,7 @@
           <input
             type="text"
             id="postalCode"
-            v-model="customer.primaryAddress.postalCode"
+            v-model="customer.address.postalCode"
           />
         </li>
         <li>
@@ -54,7 +54,7 @@
           <input
             type="text"
             id="country"
-            v-model="customer.primaryAddress.country"
+            v-model="customer.address.country"
           />
         </li>
       </ul>
@@ -92,9 +92,9 @@ import { ICustomer } from "@/types/Customer";
 
 export default class CustomerModal extends Vue {
   customer: ICustomer = {
-    primaryAddress: {},
-    createdOn: new Date(),
-    updatedOn: new Date(),
+    address: {},
+    dateCreated: new Date(),
+    dateUpdated: new Date(),
     firstName: "",
     lastName: ""
   };
@@ -102,7 +102,7 @@ export default class CustomerModal extends Vue {
   save() {
     this.$emit("save:customer", this.customer);
   }
-  
+
   close() {
     this.$emit("close");
   }

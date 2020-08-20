@@ -33,7 +33,7 @@
           {{ customer.address.state }}
         </td>
         <td>
-          {{ customer.createdOn | humanizeDate }}
+          {{ customer.dateCreated | humanizeDate }}
         </td>
         <td>
           <div @click="deleteCustomer(customer.id)">

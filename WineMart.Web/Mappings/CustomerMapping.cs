@@ -14,8 +14,8 @@ namespace WineMart.Web.Serialization
             return new CustomerViewModel
             {
                 Id = customer.Id,
-                CreatedOn = customer.DateCreated,
-                UpdatedOn = customer.DateUpdated,
+                DateCreated = customer.DateCreated,
+                DateUpdated = customer.DateUpdated,
                 FirstName = customer.FirstName,
                 LastName = customer.LastName,
                 Address = MapCustomerAddress(customer.Address),
@@ -26,8 +26,8 @@ namespace WineMart.Web.Serialization
         {
             return new Customer
             {
-                DateCreated = customer.CreatedOn,
-                DateUpdated = customer.UpdatedOn,
+                DateCreated = customer.DateCreated,
+                DateUpdated = customer.DateUpdated,
                 FirstName = customer.FirstName,
                 LastName = customer.LastName,
                 Address = MapCustomerAddress(customer.Address),

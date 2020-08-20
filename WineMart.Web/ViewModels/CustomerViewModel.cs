@@ -9,8 +9,8 @@ namespace WineMart.Web.ViewModels
     public class CustomerViewModel
     {
         public int Id { get; set; }
-        public DateTime CreatedOn { get; set; }
-        public DateTime UpdatedOn { get; set; }
+        public DateTime DateCreated{ get; set; }
+        public DateTime DateUpdated { get; set; }
 
         [MaxLength(32)] 
         public string FirstName { get; set; }

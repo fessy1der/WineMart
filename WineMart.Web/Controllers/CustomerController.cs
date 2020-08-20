@@ -31,8 +31,8 @@ namespace WineMart.Web.Controllers
                 return BadRequest(ModelState);
             }
             _logger.LogInformation("Creating a new customer");
-            customer.CreatedOn = DateTime.UtcNow;
-            customer.UpdatedOn = DateTime.UtcNow;
+            customer.DateCreated = DateTime.UtcNow;
+            customer.DateUpdated = DateTime.UtcNow;
             var customerData = CustomerMapping.SerializeCustomer(customer);
             var newCustomer = _customerService.CreateCustomer(customerData);
             return Ok(newCustomer);
@@ -52,10 +52,10 @@ namespace WineMart.Web.Controllers
                     LastName = customer.LastName,
                     Address = CustomerMapping
                         .MapCustomerAddress(customer.Address),
-                    CreatedOn = customer.DateCreated,
-                    UpdatedOn = customer.DateUpdated
+                    DateCreated = customer.DateCreated,
+                    DateUpdated = customer.DateUpdated
                 })
-                .OrderByDescending(customer => customer.CreatedOn)
+                .OrderByDescending(customer => customer.DateCreated)
                 .ToList();
 
             return Ok(customerModels);

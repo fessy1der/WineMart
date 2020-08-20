@@ -37,11 +37,11 @@ import Vue from 'vue';
 import {Component} from 'vue-property-decorator';
 
 @Component({
-    name: 'ShipmentModal',
+    name: 'AppModal',
     components: {}
 })
 
-export default class ShipmentModal extends Vue {
+export default class AppModal extends Vue {
     close(){
         this.$emit("close");
     }
